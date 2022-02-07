@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\basicController;
+use App\Http\Controllers\singleActionController;
+use App\Http\Controllers\photoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/welcome',function(){
-    return view('welcome');
-});
+Route::get('/',[basicController::class,'index']);
 
-// Route::get('/{name?}', function ($name=null) {
-//     $demo="<h2>This is demo</h2>";
-//     $data=compact('name','demo');
+Route::get('/courses',singleActionController::class);
 
-//     return view('home')->with($data);
-// });
 
+Route::resource('/photo',photoController::class);
