@@ -16,3 +16,43 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home',function(){
+    echo "home";
+});
+
+
+Route::post('/test',function(){
+    echo "Testing post method";
+});
+
+
+Route::any('/any',function(){
+    echo "Testing any route ";
+});
+
+// <---------->
+
+// Route::get('/demo',function(){
+//  return view('demo');
+// });
+
+
+//
+// <----get data  ->
+
+Route::get('/user/{name}/{id?}',function($name,$id=null){
+echo $name . " .";
+echo $id ;
+
+});
+
+
+//----- send data to view
+
+Route::get('/demo/{name}/{id?}',function($name,$id=null){
+
+     $data=compact('name','id');
+     return view('demo')->with($data); //take data and got to demo page
+});
+
