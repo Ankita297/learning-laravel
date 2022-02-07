@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{name?}', function ($name=null) {
-    $demo="<h2>This is demo</h2>";
-    $data=compact('name','demo');
-
-    return view('home')->with($data);
+Route::get('/welcome',function(){
+    return view('welcome');
 });
+
+// Route::get('/{name?}', function ($name=null) {
+//     $demo="<h2>This is demo</h2>";
+//     $data=compact('name','demo');
+
+//     return view('home')->with($data);
+// });
 
