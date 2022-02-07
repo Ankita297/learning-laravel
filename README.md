@@ -1,25 +1,27 @@
 
-# Database configuration & migrations
-
-### Migrations are like version control for your database
+# Models
 
 
 
-## Steps to connect Database to your app
+
+## What is Model
+
+### Each table has its own model 
+
+ - Model are class based php files
+ -  Laravel includes  Eloquent , an object relational mapper 
+
+### cmd to make modal
+
+- php artisan make:model <modelName>
+- php artisan make:model <modelName> --migration
 
 
- - Create a DB in phpmyadmin 
- -   (to clear cache and reconfig) ---php artisan config:Cache
-- first migration    run ---  php artisan migrate
+### Insert query in ORM 
+-use App\Model 
+- 
+create the instance of that  object then start putting values 
 
+### Select query in ORM 
 
-### Create table using migration 
-
-- php artisan make:migration create_customers_table 
-- then create table schema and run cmd ---php artisan migrate
-- to roll back migrate --- php artisan migrate:rollback
-- sometime reln is not establised among table so we run migarytion fresh , so it will refresh all --- php artisan migrate:refresh
-
-
-### add column 
--php artisan make:migration add_column_to_custmers_table
+-  $customers=Customer::all();

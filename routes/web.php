@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\basicController;
-use App\Http\Controllers\singleActionController;
-use App\Http\Controllers\photoController;
-use App\Http\Controllers\formController;
+use App\Http\Controllers\customerController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,13 +16,10 @@ use App\Http\Controllers\formController;
 |
 */
 
-Route::get('/',[basicController::class,'index']);
 
-Route::get('/courses',singleActionController::class);
+Route::get('/customer/create',[customerController::class,'create']);
+
+Route::get('/customer/view',[customerController::class,'view']);
 
 
-Route::resource('/photo',photoController::class);
-
-Route::get('/register',[formController::class,'index']);
-
-Route::post('/register',[formController::class,'register']);
+Route::post('/customer',[customerController::class,'store']);
