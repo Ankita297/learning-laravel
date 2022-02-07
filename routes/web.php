@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\basicController;
 use App\Http\Controllers\singleActionController;
 use App\Http\Controllers\photoController;
-
+use App\Http\Controllers\formController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +22,7 @@ Route::get('/courses',singleActionController::class);
 
 
 Route::resource('/photo',photoController::class);
+
+Route::get('/register',[formController::class,'index']);
+
+Route::post('/register',[formController::class,'register']);
