@@ -15,50 +15,12 @@
         </h1>
     <form action="{{url('/')}}/register" method="POST">
         @csrf
-        <div class="form-group">
-            <label for="email">Name:</label>
-            <input type="text" name="name" class="form-control" placeholder="Enter Name" id="email">
-          </div>
-          <span class="text-danger">
+        <x-input type="text" placeholder="Enter your name" name="name" label="Name" />
+        <x-input type="email" placeholder="Enter your email" name="email" label="Email" />
+        <x-input type="password" placeholder="Enter your Password" name="password" label="Password" />
+        <x-input type="text" placeholder=" Confirm Password" name="password_confirmation" label="Confirm Password" />
 
-          @error('name')
-{{$message}}
-          @enderror
-        </span>
-<br/>
-        <div class="form-group">
-          <label for="email">Email address:</label>
-          <input type="text" name="email" class="form-control" placeholder="Enter email" id="email">
-        </div>
-        <span class="text-danger">
-
-            @error('email')
-  {{$message}}
-            @enderror
-          </span>
-  <br/>
-        <div class="form-group">
-          <label for="pwd">Password:</label>
-          <input type="password" name="password" class="form-control" placeholder="Enter password" id="pwd">
-        </div>
-        <span class="text-danger">
-
-            @error('password')
-  {{$message}}
-            @enderror
-          </span>
-  <br/>
-        <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" name="password_confirmation" class="form-control" placeholder="Enter password" id="pwd">
-          </div>
-          <span class="text-danger">
-
-            @error('password_confirmation')
-  {{$message}}
-            @enderror
-          </span>
-  <br/>
+       
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
