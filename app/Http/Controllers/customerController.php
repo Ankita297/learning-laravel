@@ -39,11 +39,17 @@ class customerController extends Controller
     }
 
     //select query
-    public function view()
+    public function view(Request $Req)
     {
+        $search = $Req['search'] ?? "";
+        if($search!=""){
 
-        $customers = Customer::all();
-        $data = compact('customers');
+               $customers = Customer::where('name','LIKE',"%$search%")->orWhere('email','LIKE',"%$search%")->get();
+               //name when equal to search
+        }else{
+          $customers=Customer::all();
+        }
+        $data = compact('customers','search');
         return view('customer_view')->with($data);
     }
 
@@ -54,7 +60,6 @@ class customerController extends Controller
         $customer = Customer::find($id);
         if (!is_null($customer)) {
             $customer->delete();
-
         }
 
         return redirect('/customer');
@@ -90,11 +95,11 @@ class customerController extends Controller
         return redirect("/customer");
     }
 
-    public function trash (){
-        $customers =Customer::onlyTrashed()->get();
-        $data=compact('customers');
+    public function trash()
+    {
+        $customers = Customer::onlyTrashed()->get();
+        $data = compact('customers');
         return view('customer_trash')->with($data);
-
     }
 
     public function restore($id)
@@ -103,7 +108,6 @@ class customerController extends Controller
         $customer = Customer::withTrashed()->find($id);
         if (!is_null($customer)) {
             $customer->restore();
-
         }
 
         return redirect('/customer');
@@ -114,10 +118,8 @@ class customerController extends Controller
         $customer = Customer::withTrashed()->find($id);
         if (!is_null($customer)) {
             $customer->forceDelete();
-
         }
 
         return redirect('/customer');
     }
-
 }

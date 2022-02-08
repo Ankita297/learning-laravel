@@ -41,7 +41,13 @@
 </nav>
 <br/>
 <br/>
-
+<form action="" method="GET" class="col-9">
+<div class="form-group">
+  <input type="search" name="search"  class="form-control" placeholder="Search by name or email" value="{{$search}}" aria-describedby="helpId">
+</div>
+<button class="btn btn-primary">Search</button>
+<a href="{{url('/customer')}}"><button type="button" class="btn btn-primary">Reset</button></a>
+</form>
 <a href="{{route('customer.create')}}"><button>Add</button></a>
 <a href="{{url('/customer/trash')}}"><button>Trash</button></a>
 
