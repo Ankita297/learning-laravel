@@ -1,9 +1,12 @@
 
-# Routing through 
+## customer helper 
 
-##
-- assign a name alias 
-Route::get('/get')->name("get") and the use route ('get)
+- php files  which store imp function
+- the fucntion which we use repeatedly 
 
-###
-- In btn and anchor tag you need to manage the routing so for that use route 
+## accessor and mutator
+-  accessor transforms an Eloquent attribute value when it is accessed. To define an accessor, create a get{Attribute}Attribute method on your model where {Attribute} is the "studly" cased name of the column you wish to access.
+
+
+ ## Defining A Mutator
+A mutator transforms an Eloquent attribute value when it is set. To define a mutator, define a set{Attribute}Attribute method on your model where {Attribute} is the "studly" cased name of the column you wish to access.

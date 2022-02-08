@@ -41,70 +41,58 @@
 @php
 $demo=1
 @endphp
-
-<x-input  type="text" label="Name" name="name" placeholder="Please Enter the name" value={{$customer->name}} />
-
-
-<x-input type="email"  label="email" name="email" placeholder="Enter the email" value={{$customer->email}}/>
-<x-input type="password" label="Password" name="password" placeholder="Enter the Password" value={{$customer->password}}/>
-<x-input type="text" name="country" label="Country" placeholder="Enter the country" value={{$customer->country}}/>
-<x-input type="text" name="state" label="State" placeholder=" Enter the state" value={{$customer->state}}/>
-<x-input type="text" name="address" label="Address" placeholder=" Enter the address" value={{$customer->address}}/>
-
-<x-input type="date" name="dob" label="Date of birth" placeholder="" value={{$customer->dob}}/>
-
 <div class="form-group">
     <label >Name</label>
-    <input type="text" name="name" class="form-control" placeholder="" value="{{$customer->name}}" >
+    <input type="text" name="name" class="form-control" placeholder="" value={{$customer->name??" "}} >
 
   </div>
   <br/>
   <div class="form-group">
     <label >Email</label>
-    <input type="email" name="email" class="form-control" placeholder="" value="{{$customer->email}}" >
+    <input type="email" name="email" class="form-control" placeholder="" value={{$customer->email??" "}} >
 
   </div>
   <br/>
   <div class="form-group">
     <label >Password</label>
-    <input type="password" name="password" class="form-control" placeholder="" value="{{$customer->password}}" >
+    <input type="password" name="password" class="form-control" placeholder="" value={{$customer->password??" "}} >
 
   </div>
   <br/>
   <div class="form-group">
     <label >Country</label>
-    <input type="text" name="country" class="form-control" placeholder="" value="{{$customer->country}}" >
+    <input type="text" name="country" class="form-control" placeholder="" value={{$customer->country??" "}} >
 
   </div>
   <br/>
   <div class="form-group">
     <label >State</label>
-    <input type="text" name="state" class="form-control" placeholder="" value="{{$customer->state}}" >
+    <input type="text" name="state" class="form-control" placeholder="" value={{$customer->state??" "}} >
 
   </div>
   <br/>
 
   <div class="form-group">
     <label >Address</label>
-    <input type="text" name="address" class="form-control" placeholder="" value="{{$customer->address}}" >
+    <input type="text" name="address" class="form-control" placeholder="" value={{$customer->address??" "}} >
 
   </div>
   <br/>
   <div class="form-group">
     <label >DOB</label>
-    <input type="date" name="dob" class="form-control" placeholder="" value="{{$customer->dob}}" >
+    <input type="date" name="dob" class="form-control" placeholder="" value={{$customer->dob?? ""}} >
 
   </div>
   <br/>
   <p>Please select your gender:</p>
-  <input type="radio"  name="gender" value="M"   {{$customer->gender=="M"?"checked":""}}
+  <input type="radio"  name="gender" value="M"   {{$customer->gender??" "=="M"?"checked":""}}
   />
   <label for="male">Male</label><br>
-  <input type="radio"  name="gender" value="W"   {{$customer->gender=="W"?"checked":""}}
+  <input type="radio"  name="gender" value="W"   {{$customer->gender??" "=="W"?"checked":""}}
   />
 
   <label for="female">female</label><br>
-  <input type="radio"  name="gender" value="O"   {{$customer->gender=="O"?"checked":""}}
+  <input type="radio"  name="gender" value="O"   {{$customer->gender?? " "=="O"?"checked":""}}
   />
 
   <label for="other">Other</label>

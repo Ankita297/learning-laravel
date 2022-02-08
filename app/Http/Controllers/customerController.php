@@ -19,6 +19,9 @@ class customerController extends Controller
     public function store(Request $Req  ){
 // Insert query
 
+// p($Req->all());
+// die;
+
 $customer=new Customer;
 $customer->name=$Req['name'];
 $customer->email=$Req['email'];
