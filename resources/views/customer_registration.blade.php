@@ -9,32 +9,109 @@
 
 </head>
 <body>
+
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #2b6996;">
+    <a class="navbar-brand" href="#">Tech</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation"></button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/register')}}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/customer')}}">Customer</a>
+            </li>
+
+
+        </ul>
+
+    </div>
+</nav>
+<br/>
+<br/>
+
 <div class="container">
-    <h1 class="text-center">Registration Form</h1>
-    <form method="POST" action="{{url('/')}}/customer">
+    <h1 class="text-center">{{$title}}</h1>
+    <form method="POST" action="{{$url}}">
         @csrf
 @php
 $demo=1
 @endphp
 
-<x-input  type="text" label="Name" name="name" placeholder="Please Enter the name" :demo="$demo"/>
+<x-input  type="text" label="Name" name="name" placeholder="Please Enter the name" value={{$customer->name}} />
 
 
-<x-input type="email"  label="email" name="email" placeholder="Enter the email"/>
-<x-input type="password" label="Password" name="password" placeholder="Enter the Password"/>
-<x-input type="text" name="country" label="Country" placeholder="Enter the country"/>
-<x-input type="text" name="state" label="State" placeholder=" Enter the state"/>
-<x-input type="text" name="address" label="Address" placeholder=" Enter the address"/>
+<x-input type="email"  label="email" name="email" placeholder="Enter the email" value={{$customer->email}}/>
+<x-input type="password" label="Password" name="password" placeholder="Enter the Password" value={{$customer->password}}/>
+<x-input type="text" name="country" label="Country" placeholder="Enter the country" value={{$customer->country}}/>
+<x-input type="text" name="state" label="State" placeholder=" Enter the state" value={{$customer->state}}/>
+<x-input type="text" name="address" label="Address" placeholder=" Enter the address" value={{$customer->address}}/>
 
-<x-input type="date" name="dob" label="Date of birth" placeholder=""/>
-<p>Please select your gender:</p>
-<input type="radio"  name="gender" value="M">
-<label for="male">Male</label><br>
-<input type="radio"  name="gender" value="W">
-<label for="female">female</label><br>
-<input type="radio"  name="gender" value="O">
-<label for="other">Other</label>
-<br/><br/>
+<x-input type="date" name="dob" label="Date of birth" placeholder="" value={{$customer->dob}}/>
+
+<div class="form-group">
+    <label >Name</label>
+    <input type="text" name="name" class="form-control" placeholder="" value="{{$customer->name}}" >
+
+  </div>
+  <br/>
+  <div class="form-group">
+    <label >Email</label>
+    <input type="email" name="email" class="form-control" placeholder="" value="{{$customer->email}}" >
+
+  </div>
+  <br/>
+  <div class="form-group">
+    <label >Password</label>
+    <input type="password" name="password" class="form-control" placeholder="" value="{{$customer->password}}" >
+
+  </div>
+  <br/>
+  <div class="form-group">
+    <label >Country</label>
+    <input type="text" name="country" class="form-control" placeholder="" value="{{$customer->country}}" >
+
+  </div>
+  <br/>
+  <div class="form-group">
+    <label >State</label>
+    <input type="text" name="state" class="form-control" placeholder="" value="{{$customer->state}}" >
+
+  </div>
+  <br/>
+
+  <div class="form-group">
+    <label >Address</label>
+    <input type="text" name="address" class="form-control" placeholder="" value="{{$customer->address}}" >
+
+  </div>
+  <br/>
+  <div class="form-group">
+    <label >DOB</label>
+    <input type="date" name="dob" class="form-control" placeholder="" value="{{$customer->dob}}" >
+
+  </div>
+  <br/>
+  <p>Please select your gender:</p>
+  <input type="radio"  name="gender" value="M"   {{$customer->gender=="M"?"checked":""}}
+  />
+  <label for="male">Male</label><br>
+  <input type="radio"  name="gender" value="W"   {{$customer->gender=="W"?"checked":""}}
+  />
+
+  <label for="female">female</label><br>
+  <input type="radio"  name="gender" value="O"   {{$customer->gender=="O"?"checked":""}}
+  />
+
+  <label for="other">Other</label>
+  <br/><br/>
+
+
+
 
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

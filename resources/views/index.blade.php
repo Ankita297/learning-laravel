@@ -34,21 +34,5 @@
 <br/>
 <br/>
 
-
-    <div class="container">
-        <h1>
-            Register Form
-        </h1>
-    <form action="{{url('/')}}/register" method="POST">
-        @csrf
-        <x-input type="text" placeholder="Enter your name" name="name" label="Name" />
-        <x-input type="email" placeholder="Enter your email" name="email" label="Email" />
-        <x-input type="password" placeholder="Enter your Password" name="password" label="Password" />
-        <x-input type="text" placeholder=" Confirm Password" name="password_confirmation" label="Confirm Password" />
-
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
 </body>
 </html>
