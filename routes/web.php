@@ -5,6 +5,8 @@ use App\Http\Controllers\basicController;
 use App\Http\Controllers\customerController;
 
 use App\Http\Controllers\formController;
+use App\Http\Controllers\fileUploadController;
+
 use Illuminate\Http\Request;
 
 
@@ -67,3 +69,7 @@ return redirect('get-all-sessions');
 });
 
 
+Route::get('/upload',function(){
+    return view('upload');
+});
+Route::post('/upload',[fileUploadController::class,'upload']);
