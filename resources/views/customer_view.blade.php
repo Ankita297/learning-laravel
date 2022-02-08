@@ -11,7 +11,15 @@
 <body>
 
 <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #2b6996;">
-    <a class="navbar-brand" href="#">Tech</a>
+    <a class="navbar-brand" href="#">
+
+      @if(session()->has('user_name'))
+
+        {{session()->get('user_name')}}
+        @else
+        Guest
+       @endif
+    </a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
         aria-expanded="false" aria-label="Toggle navigation"></button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
@@ -35,6 +43,8 @@
 <br/>
 
 <a href="{{route('customer.create')}}"><button>Add</button></a>
+<a href="{{url('/customer/trash')}}"><button>Trash</button></a>
+
 
             <table class="table">
                 <thead>
@@ -80,7 +90,7 @@
                 <td>
                    {{-- <a href="{{url('/customer/delete/')}}/{{$customer->customers_id}}"><button class="btn btn-danger">Delete</button></a> --}}
 
-                   <a href="{{route('customer.delete',['id'=>$customer->customers_id])}}"><button class="btn btn-danger">Delete</button></a>
+                   <a href="{{route('customer.delete',['id'=>$customer->customers_id])}}"><button class="btn btn-danger">Trash</button></a>
                    <a href="{{route('customer.edit',['id'=>$customer->customers_id])}}"><button class="btn btn-success">Edit</button></a>
 
                 </td>
