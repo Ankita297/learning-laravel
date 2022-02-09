@@ -11,14 +11,16 @@ use App\Models\Group;
 class indexController extends Controller
 {
     //
-    public function index(){
-//    return  Member::find(1)->getGroup;
-// return Member::get();
+    public function index()
+    {
+        //    return  Member::find(1)->getGroup;
+        // return Member::get();
 
-return Member::with('group')->get();
+        return Member::with('group')->get();
     }
 
-    public function group(){
-return Group::with('member')->get();
+    public function group()
+    {
+        return Group::with('member')->get();
     }
 }
