@@ -41,6 +41,7 @@
 </nav>
 <br/>
 <br/>
+<div class="container">
 <form action="" method="GET" class="col-9">
 <div class="form-group">
   <input type="search" name="search"  class="form-control" placeholder="Search by name or email" value="{{$search}}" aria-describedby="helpId">
@@ -107,6 +108,12 @@
 
 
                 </tbody>
+
             </table>
+          {{-- <div class="row"  style="width: 30%; " >
+              {{$customers->links()}}
+          </div> --}}
+        </div>
+
 </body>
 </html>

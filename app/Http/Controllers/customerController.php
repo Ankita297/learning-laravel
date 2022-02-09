@@ -47,7 +47,7 @@ class customerController extends Controller
                $customers = Customer::where('name','LIKE',"%$search%")->orWhere('email','LIKE',"%$search%")->get();
                //name when equal to search
         }else{
-          $customers=Customer::all();
+          $customers=Customer::paginate(15);
         }
         $data = compact('customers','search');
         return view('customer_view')->with($data);
