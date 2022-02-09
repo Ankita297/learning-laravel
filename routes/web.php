@@ -31,6 +31,18 @@ use App\Http\Middleware\routeMiddleware;
 
 // <------->
 
+
+
+Route::middleware(['guard'])->group(
+    function(){
+
+        Route::get('group',[indexController::class,'group']);
+
+        Route::get('data',[indexController::class,'index']);
+
+    }
+);
+
 Route::get('/no-access',function(){
     echo "You are not allowed to access it ";
     die;
@@ -49,11 +61,6 @@ Route::get('logout',function(){
 
 });
 
-
-Route::get('group',[indexController::class,'group']);
-
-Route::get('data',[indexController::class,'index'])->middleware('guard');
-
 Route::get('/{lane?}',function($lang=null){
 App::setLocale($lang);
 return view('welcome');
@@ -62,4 +69,3 @@ return view('welcome');
 
 
 //group members
-
