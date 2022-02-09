@@ -9,6 +9,8 @@ use App\Http\Controllers\fileUploadController;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\App;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,21 +30,40 @@ Route::get('/',function(){
 Route::get('/register',[formController::class,'index']);
 Route::post('/register',[formController::class,'register']);
 
+Route::get('/upload',function(){
+    return view('upload');
+});
+Route::post('/upload',[fileUploadController::class,'upload']);
 
-Route::get('/customer/create',[customerController::class,'create'])->name('customer.create');
 
-Route::get('/customer',[customerController::class,'view']);
+// -------------Routing groups
+// [midlleware , prefix details ]
+
+Route::group(['prefix'=>'/customer'],function(){
+
+    Route::get('/create',[customerController::class,'create'])->name('customer.create');
+
+    Route::get('/',[customerController::class,'view']);
 
 
-Route::post('/customer',[customerController::class,'store']);
-Route::post('/customer/update/{id}',[customerController::class,'update'])->name('customer.update');
+    Route::post('/',[customerController::class,'store']);
+    Route::post('/update/{id}',[customerController::class,'update'])->name('customer.update');
 
-Route::get('/customer/delete/{id}',[customerController::class,'delete'])->name('customer.delete');
+    Route::get('/delete/{id}',[customerController::class,'delete'])->name('customer.delete');
 
-Route::get('/customer/edit/{id}',[customerController::class,'edit'])->name('customer.edit');
-Route::get('/customer/trash',[customerController::class,'trash']);
-Route::get('/customer/restore/{id}',[customerController::class,'restore'])->name('customer.restore');
-Route::get('/customer/force-delete/{id}',[customerController::class,'forceDelete'])->name('customer.force-delete');
+    Route::get('/edit/{id}',[customerController::class,'edit'])->name('customer.edit');
+    Route::get('/trash',[customerController::class,'trash']);
+    Route::get('/restore/{id}',[customerController::class,'restore'])->name('customer.restore');
+    Route::get('/force-delete/{id}',[customerController::class,'forceDelete'])->name('customer.force-delete');
+
+
+});
+
+
+//
+Route::get('/welcome',function(){
+    return view('welcome');
+});
 
 //session requests
 
@@ -69,7 +90,10 @@ return redirect('get-all-sessions');
 });
 
 
-Route::get('/upload',function(){
-    return view('upload');
+
+//localization
+
+Route::get('/{lane?}',function($lang=null){
+App::setLocale($lang);
+return view('welcome');
 });
-Route::post('/upload',[fileUploadController::class,'upload']);
