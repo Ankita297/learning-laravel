@@ -10,7 +10,7 @@ use App\Http\Controllers\fileUploadController;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\App;
-
+use App\Http\Controllers\indexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,7 +93,17 @@ return redirect('get-all-sessions');
 
 //localization
 
+
+Route::get('group',[indexController::class,'group']);
+
+Route::get('data',[indexController::class,'index']);
+
 Route::get('/{lane?}',function($lang=null){
 App::setLocale($lang);
 return view('welcome');
 });
+
+
+
+//group members
+
